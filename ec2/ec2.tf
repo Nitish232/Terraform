@@ -24,3 +24,14 @@ resource "aws_security_group" "allow_ssh" {
     }
 
 }
+
+resource "aws_instance" "backend" {
+    ami = "ami-041e2ea9402c46c32"
+    instance_type = "t2.micro"
+    security_groups =   [aws_security_group.allow_ssh.name]
+    tags = {
+        Name = "backend"
+        CreatedBy = "Nitish"
+    }
+  
+}
